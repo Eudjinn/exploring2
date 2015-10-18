@@ -8,11 +8,12 @@ plot5 <- function() {
     # select data from Baltimore City
     NEI.BC <- subset(NEI, fips == "24510")
 
-    # select motor vehicles in Baltimore City.
     # looking for the word "vehicle" probably does not gather all the sources but
     # it should be pretty close and sufficient to complete the task
     mv <- grep("vehicle", SCC$EI.Sector, ignore.case = TRUE)
     mv.SCC <- SCC$SCC[mv]
+
+    # select motor vehicles in Baltimore City.
     NEI.BC.mv <- subset(NEI.BC, SCC %in% mv.SCC)    
     
     # total emissions from motor vehicle sources per year
@@ -23,7 +24,7 @@ plot5 <- function() {
     print(qplot(year, 
           Emissions, 
           data = total.emissions.BC.mv, 
-          geom = "line", 
+          geom = c("point","line"), 
           main = "Emissions from motor vehicles in Baltimore City",
           xlab = "year",
           ylab = "Emissions (tons)"))

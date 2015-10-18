@@ -24,7 +24,7 @@ plot4 <- function() {
     print(qplot(year, 
           Emissions, 
           data = total.emissions.cc, 
-          geom = "line",
+          geom = c("point","line"),
           main = "Emissions from coal combustion-related sources"))
     dev.off()
     print("Done!")
