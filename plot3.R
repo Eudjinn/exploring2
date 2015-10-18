@@ -8,20 +8,22 @@ plot3 <- function() {
     NEI <- readRDS(file.path("exdata-data-NEI_data", "summarySCC_PM25.rds"))
     SCC <- readRDS(file.path("exdata-data-NEI_data", "Source_Classification_Code.rds"))
     
+    # subset only Baltimore City fips == "24510"
     NEI.BC <- subset(NEI, fips == "24510")
     
     # total emissions in Baltimore City fips == "24510" per each year by type
     total.emissions.BC.bytype <- tapply(NEI.BC$Emissions, list(NEI.BC$year, NEI.BC$type), sum)
     # transform the array to a more suitable for qplot format
-    melt(total.emissions.BC.bytype, varnames = c("year", "type"), value.name = "Emissions")
-    
+    total.emissions.BC.bytype <- melt(total.emissions.BC.bytype, 
+                                      varnames = c("year", "type"), 
+                                      value.name = "Emissions")
     png(filename = "plot3.png", width = 480, height = 480, units = "px")
-    qplot(year, 
+    print(qplot(year, 
           Emissions, 
           data = total.emissions.BC.bytype, 
           color = type, 
           geom = "line",
-          main = "Emissions in Baltomore City per type")
-    dev.off()
+          main = "Emissions in Baltomore City per type"))
+    dev.off()    
     print("Done!")
 }

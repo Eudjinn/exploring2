@@ -21,11 +21,11 @@ plot4 <- function() {
     ## total.emissions.cc.bytype <- melt(total.emissions.cc.bytype, varnames = c("year", "type"), value.name = "Emissions")
     
     png(filename = "plot4.png", width = 480, height = 480, units = "px")
-    qplot(year, 
+    print(qplot(year, 
           Emissions, 
           data = total.emissions.cc, 
           geom = "line",
-          main = "Emissions from coal combustion-related sources")
+          main = "Emissions from coal combustion-related sources"))
     dev.off()
     print("Done!")
 }
