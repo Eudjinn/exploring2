@@ -15,24 +15,18 @@ plot5 <- function() {
     mv.SCC <- SCC$SCC[mv]
     NEI.BC.mv <- subset(NEI.BC, SCC %in% mv.SCC)    
     
-    ## total emissions from coal combustion-related sources per year
-    # total.emissions.BC.mv <- tapply(NEI.BC.mv$Emissions, NEI.BC.mv$year, sum)
-    # total.emissions.BC.mv <- melt(total.emissions.BC.mv, varnames = "year", value.name = "Emissions")
-    
-    
-    # instead of showing total Emissions, this time lets look at boxplot of emissions all the selected
-    # sources on a log10 scale, divided into types of sources
-    # in order to avoid warnings from log10, get rid of values <= 0 first
-    NEI.BC.mv <- subset(NEI.BC.mv, Emissions > 0)    
+    ## total emissions from motor vehicle sources per year
+    total.emissions.BC.mv <- tapply(NEI.BC.mv$Emissions, NEI.BC.mv$year, sum)
+    total.emissions.BC.mv <- melt(total.emissions.BC.mv, varnames = "year", value.name = "Emissions")
     
     png(filename = "plot5.png", width = 480, height = 480, units = "px")
-    print(qplot(as.factor(year), 
-          log10(Emissions), 
-          data = NEI.BC.mv, 
-          geom = "boxplot", 
+    print(qplot(year, 
+          Emissions, 
+          data = total.emissions.BC.mv, 
+          geom = "line", 
           main = "Emissions from motor vehicles in Baltimore City",
           xlab = "year",
-          ylab = "Emissions (log10(tons))"))
+          ylab = "Emissions (tons)"))
     dev.off()
     print("Done!")
 }
