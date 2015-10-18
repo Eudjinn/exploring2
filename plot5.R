@@ -9,13 +9,13 @@ plot5 <- function() {
     NEI.BC <- subset(NEI, fips == "24510")
 
     # select motor vehicles in Baltimore City.
-    # looking for the words "motor" and "vehicles" probably does not gather all the sources but
+    # looking for the word "vehicle" probably does not gather all the sources but
     # it should be pretty close and sufficient to complete the task
     mv <- grep("vehicle", SCC$EI.Sector, ignore.case = TRUE)
     mv.SCC <- SCC$SCC[mv]
     NEI.BC.mv <- subset(NEI.BC, SCC %in% mv.SCC)    
     
-    ## total emissions from motor vehicle sources per year
+    # total emissions from motor vehicle sources per year
     total.emissions.BC.mv <- tapply(NEI.BC.mv$Emissions, NEI.BC.mv$year, sum)
     total.emissions.BC.mv <- melt(total.emissions.BC.mv, varnames = "year", value.name = "Emissions")
     
