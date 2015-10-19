@@ -25,7 +25,9 @@ plot4 <- function() {
           Emissions, 
           data = total.emissions.cc, 
           geom = c("point","line"),
-          main = "Emissions from coal combustion-related sources"))
+          main = "Emissions of PM2.5 from coal combustion-related sources",
+          xlab = "Year",
+          ylab = "Emissions (tons)"))
     dev.off()
     print("Done!")
 }

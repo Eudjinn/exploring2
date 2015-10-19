@@ -23,7 +23,9 @@ plot3 <- function() {
           data = total.emissions.BC.bytype, 
           color = type, 
           geom = c("point","line"),
-          main = "Emissions in Baltomore City per type"))
+          main = "Emissions of PM2.5 in Baltimore City",
+          xlab = "Year",
+          ylab = "Emissions (tons)"))
     dev.off()    
     print("Done!")
 }

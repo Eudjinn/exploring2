@@ -25,8 +25,8 @@ plot5 <- function() {
           Emissions, 
           data = total.emissions.BC.mv, 
           geom = c("point","line"), 
-          main = "Emissions from motor vehicles in Baltimore City",
-          xlab = "year",
+          main = "Emissions of PM2.5 from motor vehicles in Baltimore City",
+          xlab = "Year",
           ylab = "Emissions (tons)"))
     dev.off()
     print("Done!")

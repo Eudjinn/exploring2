@@ -27,12 +27,12 @@ plot6 <- function() {
     # total emissions from motor vehicle sources per year in BC
     total.emissions.BC.mv <- tapply(NEI.BC.mv$Emissions, NEI.BC.mv$year, sum)
     total.emissions.BC.mv <- melt(total.emissions.BC.mv, varnames = "year", value.name = "Emissions")
-    total.emissions.BC.mv$county <- "BC"
+    total.emissions.BC.mv$county <- "Baltimore City"
     
     # total emissions from motor vehicle sources per year in LA
     total.emissions.LA.mv <- tapply(NEI.LA.mv$Emissions, NEI.LA.mv$year, sum)
     total.emissions.LA.mv <- melt(total.emissions.LA.mv, varnames = "year", value.name = "Emissions")
-    total.emissions.LA.mv$county <- "LA"
+    total.emissions.LA.mv$county <- "Los Angeles"
     
     # add two datasets in one data frame for plotting
     total.emissions.mv <- rbind(total.emissions.BC.mv, total.emissions.LA.mv)
@@ -45,8 +45,8 @@ plot6 <- function() {
                 geom = "bar", 
                 stat = "identity",
                 fill = county,
-                main = "Emissions from motor vehicles in BC and LA",
-                xlab = "year",
+                main = "Emissions of PM2.5 from motor vehicles in BC and LA",
+                xlab = "Year",
                 ylab = "Emissions (tons)"))
     dev.off()
     print("Done!")

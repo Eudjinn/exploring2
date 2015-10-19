@@ -18,7 +18,7 @@ plot1 <- function() {
          lwd = 4, 
          xlab = "Year", 
          ylab = "Total emissions (tons)",
-         main = "Total emissions from PM2.5 in the United States")
+         main = "Total emissions of PM2.5 in the United States")
     dev.off()
     print("Done!")
 }
